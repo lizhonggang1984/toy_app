@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_185346) do
+ActiveRecord::Schema.define(version: 2020_05_20_232134) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_05_20_185346) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "remember_digest"
+    t.boolean "admin"
   end
 
 end

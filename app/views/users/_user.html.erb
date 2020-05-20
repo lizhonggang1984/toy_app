@@ -1,0 +1,19 @@
+<style>
+.buttonto{
+color: #bbbbbb;
+width: 100px;
+height: 100px;
+}
+</style>
+
+<li>
+  <%= gravatar_for user, size: 50 %>
+  <%= link_to user.name, user %>
+  <br>
+  <br>
+  <br>
+  <div class="buttonto">
+  <%= button_to "delete", user, method: :delete,
+                  data: { confirm: "Sure?" } %>
+  </div>
+</li>
