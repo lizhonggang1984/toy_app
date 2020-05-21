@@ -9,8 +9,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.paginate(page: params[:page])
-    if session[:user_id]
-      current = User.find_by(id: session[:user_id])
+    @admin = false
+    @current = User.find_by(id: session[:user_id])
+    if @current.admin
+      @admin = true
     end
   end
 

@@ -13,9 +13,7 @@ height: 100px;
   <br>
   <br>
   <div class="buttonto">
-    <% if @admin %>
   <%= button_to "delete", user, method: :delete,
                   data: { confirm: "Sure?" } %>
-      <% end %>
   </div>
 </li>
