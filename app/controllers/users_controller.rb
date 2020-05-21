@@ -16,6 +16,20 @@ class UsersController < ApplicationController
     end
   end
 
+    def following
+      @title = "Following"
+      @user = User.find(params[:id])
+      @users = @user.following.paginate(page: params[:page])
+      render 'show_follow'
+    end
+    def followers
+      @title = "Followers"
+      @user = User.find(params[:id])
+      @users = @user.followers.paginate(page: params[:page])
+      render 'show_follow'
+    end
+
+
   def logged_in_user
     unless logged_in?
       flash[:danger] = "Please log in."
@@ -31,6 +45,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -85,7 +101,14 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    def current_user?(user)
-      user == current_user
+    # 确保是正确的用户
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
+    # 确保是管理员
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
+
 end
