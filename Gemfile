@@ -62,7 +62,7 @@ gem 'rails-controller-testing'
 
 
 gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 
 gem 'bcrypt', '3.1.12'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
